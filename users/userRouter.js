@@ -14,7 +14,6 @@ router.post('/', validateUser, (req, res) => {
     res.status(201).json(user)
   })
   .catch(err => {
-    console.log(err)
     res.status(500).json({errorMessage: "cannot create user"})
   })
 });
@@ -36,7 +35,7 @@ router.get('/', (req, res) => {
   // do your magic!
   userDB.get()
   .then( user => {
-    res.status(200).json(users)
+    res.status(200).json(user)
   })
   .catch( err => {
     res.status(500).json({errorMessage: "cannot access user"})
