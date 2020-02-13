@@ -31,7 +31,7 @@ router.post('/:id/posts', validateUserId, validatePost, (req, res) => {
   })
 });
 
-router.get('/', validateUser, (req, res) => {
+router.get('/', (req, res) => {
   // do your magic!
   userDB.get()
   .then( user => {
