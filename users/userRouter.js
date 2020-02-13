@@ -119,6 +119,7 @@ function validateUserId(req, res, next) {
   userDB.getById(id)
   .then(user => {
     if(user){
+      req.user = user
       return next();
     } else {
       res.status(404).json({ message: "invalid user"})
