@@ -146,10 +146,10 @@ function validateUser(req, res, next) {
 function validatePost(req, res, next) {
   // do your magic!
   if(req.body){
-    if(req.body.name){
+    if(req.body.text){
       next();
     } else {
-      res.status(400).json({errorMessage: "No name was provided"})
+      res.status(400).json({errorMessage: "No text was provided"})
     }
   } else {
     res.status(400).json({ message: 'No post was found'})
