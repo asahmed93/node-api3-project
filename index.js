@@ -20,7 +20,7 @@ server.get('/', (req, res) => {
     res.json({ message: 'Success'})
 })
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 server.listen(port, () => {
     console.log(`server is listening on port ${port}`)
 })
