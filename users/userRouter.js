@@ -70,11 +70,14 @@ router.get('/:id/posts', validateUserId, (req, res) => {
 
 router.delete('/:id', validateUserId, (req, res) => {
   // do your magic!
-  const user = req.user;
-  userDB.remove(user.id)
+  const id = req.params.id;
+  
+  userDB.remove(id)
   .then(deleted => {
     if(deleted){
       res.status(204).end()
+    } else {
+      res.status(404).json({ errorMessage: "cannot find user"})
     }
   })
   .catch(err => {
@@ -128,7 +131,9 @@ function validateUserId(req, res, next) {
 
 function validateUser(req, res, next) {
   // do your magic!
-  if(!req.body){
+  const userArray = Object.keys(req.body)
+
+  if(userArray.length === 0){
     res.status(400).json({ message: "user is not found"})
   }
   if(!req.body.name) {
