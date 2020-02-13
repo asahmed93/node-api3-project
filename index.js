@@ -7,9 +7,12 @@ const userRouter = require('./users/userRouter')
 
 function logger(req,res,next){
     console.log(`${req.method} to ${req.url}`)
+    next()
 }
 
 server.use(express.json())
+
+server.use(logger)
 
 server.use('/api/users', userRouter)
 
@@ -22,5 +25,3 @@ server.listen(port, () => {
     console.log(`server is listening on port ${port}`)
     
 })
-
-server.use(logger)
